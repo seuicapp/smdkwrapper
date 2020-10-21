@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.panpf.bintray-publish'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 20
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.panpf.bintray-publish:bintray-publish:1.0.0'
+    }
+}
+dependencies {
+    compileOnly fileTree(dir: "libs", include: ["*.jar"])
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+// 配置maven库，生成POM.xml文件
+publish{
+    repoName ='seuic'//仓库名
+    userOrg='seuicapp'//用户名
+    groupId = 'com.seuic.mdm.api'//自定义
+    artifactId = 'smdkwrapper'//自定义
+    publishVersion = '0.0.1'
+    desc = 'The SMDKWrapper package of the seuic'
+    website ='https://github.com/seuicapp/smdkwrapper'
+}
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
