@@ -257,7 +257,7 @@ public class MdmApplicationManagerWrapper {
     }
     /**
      *
-     *静默卸载应用
+     *
      * @param packageName - 用户Id
      * @param observer - 接口中回调卸载应用状态
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功

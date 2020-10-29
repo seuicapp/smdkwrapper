@@ -355,10 +355,10 @@ public class MdmNetworkManagerWrapper {
      * @return 0 设置失败， 1 设置成功， -1 方法调用失败
      */
     public int setSSID(String ssid, String psw, int type) {
-       Boolean re = ReflectionTool.invokeDynamicMethodWithReturn(mdmNetworkManager, "setSSID",
+        Boolean re = ReflectionTool.invokeDynamicMethodWithReturn(mdmNetworkManager, "setSSID",
                 new Class[]{String.class, String.class, int.class},
                 new Object[]{ssid, psw, type}, boolean.class);
-       return ConvertUtils.booleanToInt(re);
+        return ConvertUtils.booleanToInt(re);
     }
 
     /**
