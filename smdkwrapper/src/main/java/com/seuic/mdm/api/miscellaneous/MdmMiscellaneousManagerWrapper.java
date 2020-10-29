@@ -22,10 +22,10 @@ public class MdmMiscellaneousManagerWrapper {
     }
 
     /**
-     * 允许设置字体大小
+     * 是否允许操作字体大小选项
      * @param allowed 允许-true,禁止-false
      * @return SMDKResult.NOT_SUPPORT - 设备不支持 ，SMDKResult.SUCCESS - 方法调用成功
-     * @deprecated
+     * @deprecated 已过时。 从 v0.0.2 开始废弃此接口，请使用 MdmDisplayManagerWrapper.allowChangeFontScale 替代
      */
     public int allowChangeFontScale(boolean allowed) {
         return ReflectionTool.invokeDynamicVoidMethod(mdmMiscellaneousManager, "allowChangeFontScale", new Class[]{boolean.class}, new Object[]{allowed});

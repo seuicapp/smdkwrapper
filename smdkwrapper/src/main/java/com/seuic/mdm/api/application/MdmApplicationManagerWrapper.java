@@ -170,18 +170,21 @@ public class MdmApplicationManagerWrapper {
 
     }
     /**
-     * 禁止移动设备和 FLASH 设备之间进行数据传输
-     *
+     * 设置应用可用状态
      * @param packageName - 包名
      * @param newState - 模块开启关闭状态
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功
      * @throws RuntimeException - 调用此方法后，系统执行未达到预期结果将抛出此异常
-     * @deprecated 已过时。  从 v0.0.2 开始废弃此接口，推荐使用 MdmSecurityManager.disallowFlashDiskTransfer进行替代
      */
     public int setApplicationEnabledSetting(String packageName, int newState) {
         return ReflectionTool.invokeDynamicVoidMethod(mdmApplicationManager, "setApplicationEnabledSetting", new Class[]{String.class, int.class}, new Object[]{packageName, newState});
     }
 
+    /**
+     * 查询应用可用状态
+     * @param packageName
+     * @return
+     */
     public int getApplicationEnabledSetting(String packageName) {
         Integer i = ReflectionTool.invokeDynamicMethodWithReturn(mdmApplicationManager, "getApplicationEnabledSetting", new Class[]{String.class}, new Object[]{packageName}, int.class);
         if (i == null) return SMDKResult.NOT_SUPPORT;
@@ -193,54 +196,49 @@ public class MdmApplicationManagerWrapper {
      * @param userId - 用户ID
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功
      * @throws RuntimeException - 调用此方法后，系统执行未达到预期结果将抛出此异常
-     * @deprecated 已过时。  从 v0.0.2 开始废弃此接口，推荐使用 MdmSecurityManager.disallowFlashDiskTransfer进行替代
      */
     public int removeAllRecents(int userId) {
         return ReflectionTool.invokeDynamicVoidMethod(mdmApplicationManager, "removeAllRecents", new Class[]{int.class}, new Object[]{userId});
     }
     /**
-     * 禁止移动设备和 FLASH 设备之间进行数据传输
+     * 删除应用缓存数据
      *
      * @param packageName - 包名
      * @param userId - 用户ID
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功
      * @throws RuntimeException - 调用此方法后，系统执行未达到预期结果将抛出此异常
-     * @deprecated 已过时。  从 v0.0.2 开始废弃此接口，推荐使用 MdmSecurityManager.disallowFlashDiskTransfer进行替代
      */
     public int deleteApplicationCacheFilesAsUser(String packageName, int userId) {
         return ReflectionTool.invokeDynamicVoidMethod(mdmApplicationManager, "deleteApplicationCacheFilesAsUser", new Class[]{String.class, int.class}, new Object[]{packageName, userId});
     }
     /**
-     * 禁止移动设备和 FLASH 设备之间进行数据传输
+     * 清除应用数据
      *
      * @param packageName - 包名
      * @param userId - 用户ID
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功
      * @throws RuntimeException - 调用此方法后，系统执行未达到预期结果将抛出此异常
-     * @deprecated 已过时。  从 v0.0.2 开始废弃此接口，推荐使用 MdmSecurityManager.disallowFlashDiskTransfer进行替代
      */
     public int clearApplicationUserData(String packageName, int userId) {
         return ReflectionTool.invokeDynamicVoidMethod(mdmApplicationManager, "clearApplicationUserData", new Class[]{String.class, int.class}, new Object[]{packageName, userId});
     }
     /**
-     * 禁止移动设备和 FLASH 设备之间进行数据传输
+     * 获取应用安装列表
      *
      * @param userId - 用户Id
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功
      * @throws RuntimeException - 调用此方法后，系统执行未达到预期结果将抛出此异常
-     * @deprecated 已过时。  从 v0.0.2 开始废弃此接口，推荐使用 MdmSecurityManager.disallowFlashDiskTransfer进行替代
      */
     public List< String > getInstalledApplicationsAsUser(int userId) {
         return ReflectionTool.invokeDynamicMethodWithReturn(mdmApplicationManager, "getInstalledApplicationsAsUser", new Class[]{int.class}, new Object[]{userId}, List.class);
     }
     /**
-     * 禁止移动设备和 FLASH 设备之间进行数据传输
+     * 静默安装应用
      *
      * @param apkPath - 安装包路径
      * @param observer - 接口中返回安装状态
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功
      * @throws RuntimeException - 调用此方法后，系统执行未达到预期结果将抛出此异常
-     * @deprecated 已过时。  从 v0.0.2 开始废弃此接口，推荐使用 MdmSecurityManager.disallowFlashDiskTransfer进行替代
      */
     public int silentInstall(String apkPath, final MdmPackageObserverWrapper observer) {
         int status = SMDKResult.SUCCESS;
@@ -258,13 +256,12 @@ public class MdmApplicationManagerWrapper {
         return status;
     }
     /**
-     * 禁止移动设备和 FLASH 设备之间进行数据传输
      *
+     *静默卸载应用
      * @param packageName - 用户Id
      * @param observer - 接口中回调卸载应用状态
      * @return SMDKResult.NOT_SUPPORT - 设备不支持， SMDKResult.SUCCESS - 方法调用成功
      * @throws RuntimeException - 调用此方法后，系统执行未达到预期结果将抛出此异常
-     * @deprecated 已过时。  从 v0.0.2 开始废弃此接口，推荐使用 MdmSecurityManager.disallowFlashDiskTransfer进行替代
      */
     public int silentUninstall(String packageName, final MdmPackageObserverWrapper observer) {
         int status = SMDKResult.SUCCESS;
