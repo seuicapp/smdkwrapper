@@ -182,8 +182,8 @@ public class MdmApplicationManagerWrapper {
 
     /**
      * 查询应用可用状态
-     * @param packageName
-     * @return
+     * @param packageName -
+     * @return -1 - 设备不支持该方法，其他值 - 应用状态
      */
     public int getApplicationEnabledSetting(String packageName) {
         Integer i = ReflectionTool.invokeDynamicMethodWithReturn(mdmApplicationManager, "getApplicationEnabledSetting", new Class[]{String.class}, new Object[]{packageName}, int.class);
