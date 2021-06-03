@@ -521,7 +521,7 @@ public class MdmNetworkManagerWrapper {
      * @return 0 设置失败， 1 设置成功， -1 方法调用失败
      */
     public int setMobileDataDisallowed(boolean disallowed) {
-        Boolean re = ReflectionTool.invokeDynamicMethodWithReturn(mdmNetworkManager, "setMobileDataEnabled",
+        Boolean re = ReflectionTool.invokeDynamicMethodWithReturn(mdmNetworkManager, "setMobileDataDisallowed",
                 new Class[]{boolean.class},
                 new Object[]{disallowed}, boolean.class);
         return ConvertUtils.booleanToInt(re);
