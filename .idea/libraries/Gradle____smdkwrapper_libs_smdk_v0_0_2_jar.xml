@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./smdkwrapper/libs/smdk_v0.0.2.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/smdkwrapper/libs/smdk_v0.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

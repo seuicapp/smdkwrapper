@@ -1,3 +1,0 @@
-include ':smdkwrapper'
-include ':app'
-rootProject.name = "SMDKWrapper"
